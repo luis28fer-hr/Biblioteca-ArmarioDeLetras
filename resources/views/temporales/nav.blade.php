@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">A R M A R I O  &nbsp;D E&nbsp;  L E T R A S</a>
+    <a class="navbar-brand" href="{{route('Inicio')}}">A R M A R I O  &nbsp;D E&nbsp;  L E T R A S</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,7 +10,7 @@
             <a class="nav-link {{request()->routeIs('Inicio')? 'active': ''}}" aria-current="page" href="{{route('Inicio')}}">Inicio</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{request()->routeIs('Registrar')? 'active': ''}}"  href="{{route('Registrar')}}">Registrar</a>
+            <a class="nav-link {{request()->routeIs('Registrar*')? 'active': ''}}"  href="{{route('Registrar')}}">Registrar</a>
         </li>
       </ul>
     </div>

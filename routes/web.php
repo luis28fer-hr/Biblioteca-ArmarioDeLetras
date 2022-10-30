@@ -19,3 +19,5 @@ Route::get('/', function () {
 
 Route::get('inicio', [controladorVistas::class, 'vwInicio'])->name('Inicio');
 Route::get('registrar', [controladorVistas::class, 'vwRegistrar'])->name('Registrar');
+
+Route::post('registrarLibro', [controladorVistas::class, 'validarNuevoLibro'])->name('RegistrarLibro');
