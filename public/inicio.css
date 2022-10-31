@@ -1,0 +1,55 @@
+body{
+    background-color: #F0F3F4;
+}
+
+main .inicio{
+    margin: 0 auto;
+}
+main .inicio .caja_titulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0;
+}
+main .inicio .caja_titulo p{
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+main .inicio .tarjeta {
+    margin: 0 auto;
+    background-color: aqua;
+    display: flex;
+    align-items: flex-end;
+    width: 70%;
+    height: 25rem;
+    background-image: url(https://www.azulweb.net/wp-content/uploads/2018/05/El-libro-negro-del-programador.png);
+    object-fit: contain;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+main .inicio .tarjeta .tarjeta_body{
+    background-color: #FDFEFE;
+    padding: 1rem 1.5rem;
+    border-radius: 0 0 7px 7px;
+}
+
+main .inicio .tarjeta .tarjeta_body .tarjeta_titulo{
+    color: #0c1016;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding-bottom: .2rem;
+}
+main .inicio .tarjeta .tarjeta_body .tarjeta_text{
+    color: #17202A;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: justify;
+}
+
+

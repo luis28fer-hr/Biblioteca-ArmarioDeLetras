@@ -11,70 +11,42 @@
         )</script>"!!}
 @endif
 
-
-
-<div class="container mt-5 mb-5 col-md-6">
-    <form  method="post" action="{{route('RegistrarLibro')}}">
-        @csrf
-        <div class="card text-center">
-            <div class="card-header">
-                <h4>Nuevo Libro</h4>
+<form  method="post" action="{{route('RegistrarLibro')}}">
+    @csrf
+    <section class="registrar">
+        <div class="registrar_tiutlo">
+            <p>Nuevo libro</p>
+        </div>
+        <div class="registrar_formulario">
+            <div class="caja_input">
+                <input type="text" name="isbn" class=" @error('isbn') invalido @enderror" placeholder="ISBN" value="{{old('isbn')}}">
+                <span class="text-danger">{{$errors->first('isbn')}}</span>
             </div>
-            <div class="card-body">
-                <div class="mb-2 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label fw-semibold">ISBN</label>
-                    <div class="col-sm-10">
-                    <input type="text" name="isbn" class="form-control @error('isbn') is-invalid @enderror" id="inputPassword" value="{{old('isbn')}}">
-                    <span class="text-danger">{{$errors->first('isbn')}}</span>
-
-                    </div>
-                </div>
-                <div class="mb-2 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label fw-semibold">Titulo</label>
-                    <div class="col-sm-10">
-                    <input type="text" name="titulo" class="form-control @error('titulo') is-invalid @enderror" id="inputPassword" value="{{old('titulo')}}">
-                    <span class="text-danger">{{$errors->first('titulo')}}</span>
-                    </div>
-                </div>
-                <div class="mb-2 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label fw-semibold">Autor</label>
-                    <div class="col-sm-10">
-                    <input type="text" name="autor" class="form-control @error('autor') is-invalid @enderror" id="inputPassword" value="{{old('autor')}}">
-                    <span class="text-danger">{{$errors->first('autor')}}</span>
-                    </div>
-                </div>
-                <div class="mb-2 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label fw-semibold">Paginas</label>
-                    <div class="col-sm-10">
-                    <input type="text" name="paginas" class="form-control @error('paginas') is-invalid @enderror" id="inputPassword" value="{{old('paginas')}}">
-                     <span class="text-danger">{{$errors->first('paginas')}}</span>
-
-                    </div>
-                </div>
-                <div class="mb-2 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label fw-semibold">Editorial</label>
-                    <div class="col-sm-10">
-                    <input type="text" name="editotial" class="form-control @error('editotial') is-invalid @enderror" id="inputPassword" value="{{old('editotial')}}">
-                     <span class="text-danger">{{$errors->first('editotial')}}</span>
-
-                    </div>
-                </div>
-                <div class="mb-4 row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label fw-semibold">Email</label>
-                    <div class="col-sm-10">
-                    <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="inputPassword" value="{{old('email')}}">
-                     <span class="text-danger">{{$errors->first('email')}}</span>
-
-                    </div>
-                </div>
+            <div class="caja_input">
+                <input type="text" name="titulo" class=" @error('titulo') invalido @enderror" placeholder="Titulo de libro" value="{{old('titulo')}}">
+                <span class="text-danger">{{$errors->first('titulo')}}</span>
             </div>
-            <div class="card-footer text-muted">
-                <div class="text-center">
-                    <button type="button" class="btn btn-outline-danger">Cancelar</button>
-                    <button type="submit" class="btn btn-outline-primary">Registrar</button>
-                </div>
+            <div class="caja_input">
+                <input type="text" name="autor" class=" @error('autor') invalido @enderror" placeholder="Nombre del Autor" value="{{old('autor')}}">
+                <span class="text-danger">{{$errors->first('autor')}}</span>
+            </div>
+            <div class="caja_input">
+                <input type="text" name="paginas" class=" @error('paginas') invalido @enderror" placeholder="Cantidad de paginas" value="{{old('paginas')}}">
+                <span class="text-danger">{{$errors->first('paginas')}}</span>
+            </div>
+            <div class="caja_input">
+                <input type="text" name="editotial" class=" @error('editotial') invalido @enderror" placeholder="Nombre de Editorial" value="{{old('editotial')}}">
+                <span class="text-danger">{{$errors->first('editotial')}}</span>
+            </div>
+            <div class="caja_input">
+                <input type="text" name="email" class=" @error('email') invalido @enderror" placeholder="Correo electronico de editorial" value="{{old('email')}}">
+                <span class="text-danger">{{$errors->first('email')}}</span>
             </div>
         </div>
-    </form>
-</div>
+        <div class="botones">
+            <button class="cancelar" type="reset">Cancelar</button>
+            <button class="aceptar" type="submit">Registrar</button>
+        </div>
+    </section>
+</form>
 @endsection

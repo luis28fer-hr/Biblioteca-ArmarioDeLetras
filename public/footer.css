@@ -1,0 +1,24 @@
+footer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 8rem;
+    padding: 15px 3%;
+    background-color: #091C29;
+    margin-top: 2rem;
+}
+
+footer .titulo{
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: #F4F6F7;
+    cursor: text;
+}
+
+footer .derechos{
+    font-size: 15px;
+    text-decoration: none;
+    color: #F4F6F7;
+}
