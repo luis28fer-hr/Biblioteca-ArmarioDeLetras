@@ -2,11 +2,15 @@
 @section('contenido')
 
 @if (session()->has('mensaje'))
+<?php
+$titulo = session()->get('Variable');
+?>
+
 {!!
     "<script>
         Swal.fire(
         'Todo correcto',
-        'Libro: Agregado',
+        'Libro: {$titulo} Agregado',
         'success'
         )</script>"!!}
 @endif

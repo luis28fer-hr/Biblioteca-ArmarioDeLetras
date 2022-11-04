@@ -25,8 +25,7 @@ class controladorVistas extends Controller
     public function validarNuevoLibro(validarLibro $req){
 
         $name = $req->input('titulo');
-
-        return redirect('registrar')->with('mensaje', 'Agregado correctamente');
+        return redirect('registrar')->with('mensaje', 'Agregado correctamente')->with('Variable', $name);
     }
 
 }
