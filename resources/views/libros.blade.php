@@ -14,8 +14,14 @@ $titulo = session()->get('Variable');
         'success'
         )</script>"!!}
 @endif
+<div class="container">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a href="{{route('Libros.agregar')}}" class="btn btn-success me-md-2" type="button">Agregar</a>
+        <a href="{{route('Libros.consultar')}}" class="btn btn-primary" type="button">Consultar</a>
+    </div>
+</div>
 
-<form  method="post" action="{{route('RegistrarLibro')}}">
+<form  method="post" action="{{route('Libros.guardar')}}">
     @csrf
     <section class="registrar">
         <div class="registrar_tiutlo">
@@ -31,7 +37,12 @@ $titulo = session()->get('Variable');
                 <span class="text-danger">{{$errors->first('titulo')}}</span>
             </div>
             <div class="caja_input">
-                <input type="text" name="autor" class=" @error('autor') invalido @enderror" placeholder="Nombre del Autor" value="{{old('autor')}}">
+                <select class="form-select @error('autor') invalido @enderror" name="autor" aria-label="Default select example">
+                    <option selected disabled>Seleccione un autor</option>
+                    @foreach ($consulta_autores as $autor)
+                    <option value="{{$autor->Nombre}}">{{$autor->Nombre}}</option>
+                    @endforeach
+                  </select>
                 <span class="text-danger">{{$errors->first('autor')}}</span>
             </div>
             <div class="caja_input">

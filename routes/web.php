@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AutorControlador;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controladorVistas;
+use App\Http\Controllers\libroControlador;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +21,15 @@ Route::get('/', function () {
 });
 
 Route::get('inicio', [controladorVistas::class, 'vwInicio'])->name('Inicio');
-Route::get('registrar', [controladorVistas::class, 'vwRegistrar'])->name('Registrar');
 
-Route::post('registrarLibro', [controladorVistas::class, 'validarNuevoLibro'])->name('RegistrarLibro');
+
+
+Route::get('libros', [libroControlador::class, 'index'])->name('Libros');
+Route::get('libros/agregar', [libroControlador::class, 'create'])->name('Libros.agregar');
+Route::post('libros/guardar', [libroControlador::class, 'store'])->name('Libros.guardar');
+Route::get('libros/consultar', [libroControlador::class, 'show'])->name('Libros.consultar');
+
+Route::get('autores', [AutorControlador::class, 'index'])->name('Autores');
+Route::get('autores/agregar', [AutorControlador::class, 'create'])->name('Autores.agregar');
+Route::post('autores/guardar', [AutorControlador::class, 'store'])->name('Autores.guardar');
+Route::get('autores/consultar', [AutorControlador::class, 'show'])->name('Autores.consultar');

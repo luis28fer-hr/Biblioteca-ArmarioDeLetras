@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\validarAutor;
 use GuzzleHttp\RetryMiddleware;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
@@ -14,18 +15,6 @@ class controladorVistas extends Controller
 
         return view('inicio');
 
-    }
-
-    public function vwRegistrar(){
-
-        return view('registrar');
-    }
-
-
-    public function validarNuevoLibro(validarLibro $req){
-
-        $name = $req->input('titulo');
-        return redirect('registrar')->with('mensaje', 'Agregado correctamente')->with('Variable', $name);
     }
 
 }
