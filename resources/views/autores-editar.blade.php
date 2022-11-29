@@ -1,20 +1,6 @@
 @extends('plantilla')
 @section('contenido')
 
-@if (session()->has('mensaje'))
-<?php
-$nombre = session()->get('Variable');
-?>
-
-{!!
-    "<script>
-        Swal.fire(
-        'Todo correcto',
-        'Autor: {$nombre} Agregado',
-        'success'
-        )</script>"!!}
-@endif
-
 
 <div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
@@ -23,26 +9,27 @@ $nombre = session()->get('Variable');
     </div>
 </div>
 
-<form  method="post" action="{{route('Autores.guardar')}}">
+<form  method="post" action="{{route('Autores.actualizar', $consulta_autor->idAutor)}}">
     @csrf
+    {!!method_field('PUT')!!}
     <section class="registrar">
         <div class="registrar_tiutlo">
-            <p>Nuevo autor</p>
+            <p>Editar autor</p>
         </div>
         <div class="registrar_formulario">
             <div class="caja_input">
                 <p>Nombre completo</p>
-                <input name="nombre" class=" @error('nombre') invalido @enderror" placeholder="Nombre completo:" value="{{old('nombre')}}">
+                <input name="nombre" class=" @error('nombre') invalido @enderror" placeholder="Nombre completo:" value="{{$consulta_autor->Nombre}}" >
                 <span class="text-danger">{{$errors->first('nombre')}}</span>
             </div>
             <div class="caja_input">
                 <p>Fecha de nacimiento:</p>
-                <input type="date" name="fecha" class=" @error('fecha') invalido @enderror" placeholder="Fecha de nacim" value="{{old('fecha')}}">
+                <input type="date" name="fecha" class=" @error('fecha') invalido @enderror" placeholder="Fecha de nacimiento" value="{{$consulta_autor->fecha}}">
                 <span class="text-danger">{{$errors->first('fecha')}}</span>
             </div>
             <div class="caja_input">
                 <p>Numero de libros publicados:</p>
-                <input name="libros" class=" @error('libros') invalido @enderror" placeholder="Numero de libros" value="{{old('libros')}}">
+                <input name="libros" class=" @error('libros') invalido @enderror" placeholder="Numero de libros" value="{{$consulta_autor->libros}}">
                 <span class="text-danger">{{$errors->first('libros')}}</span>
             </div>
         </div>

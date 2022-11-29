@@ -1,7 +1,7 @@
 @extends('plantilla')
 @section('contenido')
 
-@if (session()->has('mensaje'))
+@if (session()->has('actualizar'))
 <?php
 $nombre = session()->get('Variable');
 ?>
@@ -10,7 +10,7 @@ $nombre = session()->get('Variable');
     "<script>
         Swal.fire(
         'Todo correcto',
-        'Autor: {$nombre} Agregado',
+        'Autor: {$nombre} Actualizado',
         'success'
         )</script>"!!}
 @endif
@@ -43,7 +43,7 @@ $nombre = session()->get('Variable');
                 <td>{{$autores->fecha}}</td>
                 <td>{{$autores->libros}}</td>
                 <td>
-                    <a type="button" class="btn btn-outline-warning">Editar</a>
+                    <a href="{{route('Autores.editar', $autores->idAutor)}}" type="button" class="btn btn-outline-warning">Editar</a>
                     <a type="button" class="btn btn-outline-danger">Eliminar</a>
                 </td>
               </tr>

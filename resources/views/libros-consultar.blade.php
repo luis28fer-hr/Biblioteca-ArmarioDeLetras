@@ -1,7 +1,7 @@
 @extends('plantilla')
 @section('contenido')
 
-@if (session()->has('mensaje'))
+@if (session()->has('actualizar'))
 <?php
 $titulo = session()->get('Variable');
 ?>
@@ -10,10 +10,11 @@ $titulo = session()->get('Variable');
     "<script>
         Swal.fire(
         'Todo correcto',
-        'Libro: {$titulo} Agregado',
+        'Libro: {$titulo} Actualizado',
         'success'
         )</script>"!!}
 @endif
+
 <div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <a href="{{route('Libros.agregar')}}" class="btn btn-success me-md-2" type="button">Agregar</a>
@@ -44,7 +45,7 @@ $titulo = session()->get('Variable');
                     <td>{{$libros->editorial}}</td>
                     <td>{{$libros->correo}}</td>
                     <td>
-                        <a type="button" class="btn btn-outline-warning">Editar</a>
+                        <a href="{{route('Libros.editar', $libros->idLibro)}}" type="button" class="btn btn-outline-warning">Editar</a>
                         <a type="button" class="btn btn-outline-danger">Eliminar</a>
                     </td>
                 </tr>

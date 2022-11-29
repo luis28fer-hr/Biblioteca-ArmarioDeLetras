@@ -46,12 +46,25 @@ class libroControlador extends Controller
 
     public function edit($id)
     {
-        //
+        $consulta_libros = DB::table('tb_libros')->where('idLibro', $id)->first();
+        $consulta_autores = DB::table('tb_autores')->get();
+        return view('libros-editar', compact('consulta_libros'), compact('consulta_autores'));
     }
 
-    public function update(Request $request, $id)
+    public function update(validarLibro $req, $id)
     {
-        //
+        DB::table('tb_libros')->where('idLibro', $id)->update([
+            "isbn" => $req -> input('isbn'),
+            "titulo" => $req -> input('titulo'),
+            "autor" => $req -> input('autor'),
+            "paginas" => $req -> input('paginas'),
+            "editorial" => $req -> input('editotial'),
+            "correo" => $req -> input('email'),
+            "updated_at" => Carbon::now()
+        ]);
+        $name = $req->input('titulo');
+        return redirect('libros/consultar')->with('actualizar', 'Agregado correctamente')->with('Variable', $name);
+
     }
 
     public function destroy($id)

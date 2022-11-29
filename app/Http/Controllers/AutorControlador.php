@@ -45,12 +45,21 @@ class AutorControlador extends Controller
 
     public function edit($id)
     {
-        //
+        $consulta_autor = DB::table('tb_autores')->where('idAutor', $id)->first();
+
+        return view('autores-editar', compact('consulta_autor'));
     }
 
-    function update(Request $request, $id)
+    function update(validarAutor $req, $id)
     {
-        //
+        DB::table('tb_autores')->where('idAutor', $id)->update([
+            "Nombre" => $req -> input('nombre'),
+            "fecha" => $req -> input('fecha'),
+            "libros" => $req -> input('libros'),
+            "updated_at" => Carbon::now()
+        ]);
+        $name = $req->input('nombre');
+        return redirect('autores/consultar')->with('actualizar', 'Agregado correctamente')->with('Variable', $name);
     }
 
     public function destroy($id)

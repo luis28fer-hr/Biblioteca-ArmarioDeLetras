@@ -10,7 +10,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tb_autores', function (Blueprint $table) {
-            $table->increments('idAutor');
+
+            $table->engine="InnoDB";
+            $table->Bigincrements('idAutor');
             $table->string('Nombre');
             $table->date('fecha');
             $table->integer('libros');
