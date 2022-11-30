@@ -15,6 +15,16 @@ $titulo = session()->get('Variable');
         )</script>"!!}
 @endif
 
+@if (session()->has('actualizar'))
+{!!
+    "<script>
+        Swal.fire(
+        'Todo correcto',
+        'Libro Eliminado',
+        'success'
+        )</script>"!!}
+@endif
+
 <div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <a href="{{route('Libros.agregar')}}" class="btn btn-success me-md-2" type="button">Agregar</a>
@@ -40,15 +50,16 @@ $titulo = session()->get('Variable');
                 <tr>
                     <th scope="row">{{$libros->isbn}}</th>
                     <td>{{$libros->titulo}}</td>
-                    <td>{{$libros->autor}}</td>
+                    <td>{{$libros->autorNombre->Nombre}}</td>
                     <td>{{$libros->paginas}}</td>
                     <td>{{$libros->editorial}}</td>
                     <td>{{$libros->correo}}</td>
                     <td>
                         <a href="{{route('Libros.editar', $libros->idLibro)}}" type="button" class="btn btn-outline-warning">Editar</a>
-                        <a type="button" class="btn btn-outline-danger">Eliminar</a>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#libroEliminar-{{$libros->idLibro}}" class="btn btn-outline-danger">Eliminar</a>
                     </td>
                 </tr>
+                @include('temporales.libro-eliminar')
             @endforeach
         </tbody>
       </table>

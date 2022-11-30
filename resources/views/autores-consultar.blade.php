@@ -15,6 +15,16 @@ $nombre = session()->get('Variable');
         )</script>"!!}
 @endif
 
+@if (session()->has('eliminar'))
+{!!
+    "<script>
+        Swal.fire(
+        'Todo correcto',
+        'Autor Eliminado',
+        'success'
+        )</script>"!!}
+@endif
+
 <div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
         <a href="{{route('Autores.agregar')}}" class="btn btn-success me-md-2" type="button">Agregar</a>
@@ -44,9 +54,10 @@ $nombre = session()->get('Variable');
                 <td>{{$autores->libros}}</td>
                 <td>
                     <a href="{{route('Autores.editar', $autores->idAutor)}}" type="button" class="btn btn-outline-warning">Editar</a>
-                    <a type="button" class="btn btn-outline-danger">Eliminar</a>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#autorEliminar-{{$autores->idAutor}}" class="btn btn-outline-danger">Eliminar</a>
                 </td>
               </tr>
+              @include('temporales.autor-eliminar')
 
             @endforeach
 

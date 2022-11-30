@@ -41,14 +41,20 @@ class libroControlador extends Controller
     public function show()
     {
         $consulta_libros = DB::table('tb_libros')->get();
+        foreach($consulta_libros as $libro){
+            $libro->autorNombre = DB::table('tb_autores')->where('idAutor', $libro->autor)->first();
+        }
+
         return view('libros-consultar', compact('consulta_libros'));
     }
 
     public function edit($id)
     {
         $consulta_libros = DB::table('tb_libros')->where('idLibro', $id)->first();
+        $autorRelacion = DB::table('tb_autores')->where('idAutor', $consulta_libros->autor)->first();
         $consulta_autores = DB::table('tb_autores')->get();
-        return view('libros-editar', compact('consulta_libros'), compact('consulta_autores'));
+
+        return view('libros-editar', compact('consulta_libros', 'autorRelacion','consulta_autores'));
     }
 
     public function update(validarLibro $req, $id)
@@ -69,6 +75,7 @@ class libroControlador extends Controller
 
     public function destroy($id)
     {
-        //
+        DB::table('tb_libros')->where('idLibro', $id)->delete();
+        return redirect('libros/consultar')->with('eliminar', 'Agregado correctamente');
     }
 }

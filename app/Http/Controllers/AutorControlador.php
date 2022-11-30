@@ -64,6 +64,7 @@ class AutorControlador extends Controller
 
     public function destroy($id)
     {
-        //
+        DB::table('tb_autores')->where('idAutor', $id)->delete();
+        return redirect('autores/consultar')->with('eliminar', 'Agregado correctamente');
     }
 }

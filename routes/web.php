@@ -30,6 +30,7 @@ Route::post('libros/guardar', [libroControlador::class, 'store'])->name('Libros.
 Route::get('libros/consultar', [libroControlador::class, 'show'])->name('Libros.consultar');
 Route::get('libros/editar/{id}', [libroControlador::class, 'edit'])->name('Libros.editar');
 Route::put('libros/actualizar/{id}', [libroControlador::class, 'update'])->name('Libros.actualizar');
+Route::put('libros/eliminar/{id}', [libroControlador::class, 'destroy'])->name('Libros.eliminar');
 
 
 
@@ -40,5 +41,6 @@ Route::post('autores/guardar', [AutorControlador::class, 'store'])->name('Autore
 Route::get('autores/consultar', [AutorControlador::class, 'show'])->name('Autores.consultar');
 Route::get('autores/editar/{id}', [AutorControlador::class, 'edit'])->name('Autores.editar');
 Route::put('autores/actualizar/{id}', [AutorControlador::class, 'update'])->name('Autores.actualizar');
+Route::put('autores/eliminar/{id}', [AutorControlador::class, 'destroy'])->name('Autores.eliminar');
 
 

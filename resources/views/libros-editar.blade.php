@@ -28,11 +28,11 @@
             </div>
             <div class="caja_input">
                 <select class="form-select @error('autor') invalido @enderror" name="autor" aria-label="Default select example">
-                    <option selected disabled>Seleccione un autor</option>
+                    <option value="{{$autorRelacion->idAutor}}" selected>{{$autorRelacion->idAutor}} - {{$autorRelacion->Nombre}}</option>
                     @foreach ($consulta_autores as $autor)
                     <option value="{{$autor->idAutor}}">{{$autor->idAutor}} - {{$autor->Nombre}}</option>
                     @endforeach
-                  </select>
+                </select>
                 <span class="text-danger">{{$errors->first('autor')}}</span>
             </div>
             <div class="caja_input">
